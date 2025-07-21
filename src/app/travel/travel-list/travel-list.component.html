@@ -1,9 +1,15 @@
 <h3>Liste des voyages</h3>
 <p>Nombre de voayages : {{ travels.length }}</p>
-<ul *ngIf="travels.length > 0">
-  <li *ngFor="let a of travels">
-    <h3>{{ a.label }}</h3>
-    <p>{{ a.prix }}</p>
-    <p>{{ a.allIncluded }}</p>
-  </li>
-</ul>
+
+@if (travels.length > 0) {
+  <ul>
+    @for(a of travelsAvecMarge; track a; let o=$odd ){
+      <li id="{{a.label}}"
+        [style.background-color]="o ? 'white':'#f2f2f2'">
+        <h3>{{ a.label }}</h3>
+        <p>{{ a.prixAvecMarge }}</p>
+        <p>{{ a.allIncluded }}</p>
+      </li>
+    }
+  </ul>
+}

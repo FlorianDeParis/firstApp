@@ -22,4 +22,9 @@ export class TravelListComponent {
     },
   ];
 
+  travelsAvecMarge=this.travels.map(t=>({...t,prixAvecMarge:t.prix*1.2}));
+
+  prixAvecMarge(p:number){
+    return p*1.2;
+  }
 }
