@@ -22,9 +22,20 @@ export class TravelListComponent {
     },
   ];
 
-  travelsAvecMarge=this.travels.map(t=>({...t,prixAvecMarge:t.prix*1.2}));
+  travelsAvecMarge=this.travels.map(t=>({
+    ...t,
+    prixAvecMarge:t.prix*1.2,
+    style: this.getStyle(t)
+  }));
 
-  prixAvecMarge(p:number){
+  prixAvecMarge(p:number): number{
     return p*1.2;
+  }
+
+  getStyle(t:Travel){
+    return ({
+      "width.px":t.prix/10,
+      "background-color": t.allIncluded ? '#f2f2f2': 'white'
+    })
   }
 }
