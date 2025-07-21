@@ -1,6 +1,5 @@
-export class Travel {
-  constructor(label: string, public prix:number) {
-    this.label = label
-  }
-  public label: string;
+export interface Travel {
+  label:string;
+  prix:number;
+  allIncluded: boolean | undefined;
 }
