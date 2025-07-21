@@ -3,8 +3,8 @@
 
 @if (travels.length > 0) {
   <ul class="list-group">
-    @for(t of travels; track t;){
-      <firstapp-travel-list-item [travel]="t"></firstapp-travel-list-item>
+    @for(t of travelsAvecMarge; track t;){
+      <firstapp-travel-list-item [travel]="t" />
     }
   </ul>
 }
