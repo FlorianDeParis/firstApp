@@ -3,17 +3,6 @@
 
 @if (travels.length > 0) {
   <ul class="list-group">
-    <!--@for(a of travelsAvecMarge; track a; let o=$odd ){
-      <li id="{{a.label}}"
-        ngClass="travel-entry"
-        [ngClass]="getClasses(a)"
-        [ngStyle]="a.style"
-        [attr.data-tool]="a.prix">
-        <h3>{{ a.label }}</h3>
-        <p>{{ a.prixAvecMarge }}</p>
-        <p>{{ a.allIncluded }}</p>
-      </li>
-    }-->
     @for(t of travels; track t;){
       <firstapp-travel-list-item [travel]="t"></firstapp-travel-list-item>
     }

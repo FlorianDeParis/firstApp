@@ -8,11 +8,5 @@ import { TravelListComponent } from './travel/travel-list/travel-list.component'
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-
-  // constructor() {
-  //   setInterval(() => {
-  //     this.title += '*';
-  //   }, 1000)
-  // }
   title = 'firstapp';
 }

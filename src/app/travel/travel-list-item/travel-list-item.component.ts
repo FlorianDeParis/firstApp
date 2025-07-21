@@ -9,9 +9,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './travel-list-item.component.scss'
 })
 export class TravelListItemComponent {
-  constructor(private parent: TravelListComponent) {
-  }
-
+  constructor(private parent: TravelListComponent) {}
 
   @Input()
   travel!: Travel;
