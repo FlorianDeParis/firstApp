@@ -5,7 +5,10 @@
   <ul>
     @for(a of travelsAvecMarge; track a; let o=$odd ){
       <li id="{{a.label}}"
-        [ngStyle]="a.style">
+        ngClass="travel-entry"
+        [ngClass]="getClasses(a)"
+        [ngStyle]="a.style"
+        [attr.data-tool]="a.prix">
         <h3>{{ a.label }}</h3>
         <p>{{ a.prixAvecMarge }}</p>
         <p>{{ a.allIncluded }}</p>

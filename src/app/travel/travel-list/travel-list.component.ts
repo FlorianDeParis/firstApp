@@ -38,4 +38,11 @@ export class TravelListComponent {
       "background-color": t.allIncluded ? '#f2f2f2': 'white'
     })
   }
+
+  getClasses(t:Travel){
+    return ({
+      "travel-entry": true,
+      "allIncluded": t.allIncluded
+    });
+  }
 }
