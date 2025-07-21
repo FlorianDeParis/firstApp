@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Travel } from '../../../models/travel';
 import { CommonModule } from '@angular/common';
+import { TravelListItemComponent } from "../travel-list-item/travel-list-item.component";
 
 @Component({
   selector: 'firstapp-travel-list',
-  imports: [CommonModule],
+  imports: [CommonModule, TravelListItemComponent],
   templateUrl: './travel-list.component.html',
   styleUrl: './travel-list.component.scss'
 })
@@ -34,7 +35,6 @@ export class TravelListComponent {
 
   getStyle(t:Travel){
     return ({
-      "width.px":t.prix/10,
       "background-color": t.allIncluded ? '#f2f2f2': 'white'
     })
   }

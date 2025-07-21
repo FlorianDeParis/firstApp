@@ -2,8 +2,8 @@
 <p>Nombre de voayages : {{ travels.length }}</p>
 
 @if (travels.length > 0) {
-  <ul>
-    @for(a of travelsAvecMarge; track a; let o=$odd ){
+  <ul class="list-group">
+    <!--@for(a of travelsAvecMarge; track a; let o=$odd ){
       <li id="{{a.label}}"
         ngClass="travel-entry"
         [ngClass]="getClasses(a)"
@@ -13,6 +13,9 @@
         <p>{{ a.prixAvecMarge }}</p>
         <p>{{ a.allIncluded }}</p>
       </li>
+    }-->
+    @for(t of travels; track t;){
+      <firstapp-travel-list-item [travel]="t"></firstapp-travel-list-item>
     }
   </ul>
 }
