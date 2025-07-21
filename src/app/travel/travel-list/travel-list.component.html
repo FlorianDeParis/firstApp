@@ -1,5 +1,9 @@
 <h3>Liste des voyages</h3>
 <p>Nombre de voayages : {{ travels.length }}</p>
-<ul>
-
+<ul *ngIf="travels.length > 0">
+  <li *ngFor="let a of travels">
+    <h3>{{ a.label }}</h3>
+    <p>{{ a.prix }}</p>
+    <p>{{ a.allIncluded }}</p>
+  </li>
 </ul>

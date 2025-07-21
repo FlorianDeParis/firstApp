@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Travel } from '../../../models/travel';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'firstapp-travel-list',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './travel-list.component.html',
   styleUrl: './travel-list.component.scss'
 })
