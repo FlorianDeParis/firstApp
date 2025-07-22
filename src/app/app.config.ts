@@ -1,13 +1,22 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, DEFAULT_CURRENCY_CODE, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { EllipsisPipeMaxCharacters } from './pipes/ellipsis.pipe';
+import { registerLocaleData } from '@angular/common';
+
+// Import des informations de locationsation françaises
+import locale_fr from "@angular/common/locales/fr";
+
+// Ajoute les "locales" que je vais utiliser dans mon appli
+registerLocaleData(locale_fr,"fr-FR")
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
+    { provide: LOCALE_ID, useValue: "fr-FR"},
+    { provide: DEFAULT_CURRENCY_CODE, useValue: "EUR"},
     // Dézpendance définie par value => valeur fixe définie au moment du démarrage
     // { provide: EllipsisPipeMaxCharacters, useValue:new Date().getMinutes() % 2 === 0 ? 10:20}
 
