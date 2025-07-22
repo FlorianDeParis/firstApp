@@ -2,6 +2,8 @@ import { Directive, ElementRef, HostListener, inject, OnInit } from '@angular/co
 
 @Directive({
   selector: '[TimeCounter]',
+  // cette directive sera accessible dans le template #tc="timeCounter"
+  exportAs: 'timeCounter',
   standalone: false
 })
 export class TimeCounterDirective implements OnInit{
@@ -10,6 +12,10 @@ export class TimeCounterDirective implements OnInit{
 
     dateEntree?:number;
     cumul = 0;
+
+    reset(): void {
+      this.cumul = 0;
+    }
 
     ngOnInit(): void {
       // Ajout d'un évènemenet par JS classique

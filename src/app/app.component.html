@@ -1,7 +1,13 @@
 <section class="layout">
   <div class="container">
     <h1>{{ title }}</h1>
-    <firstapp-travel-list TimeCounter />
+    <firstapp-travel-list #tc="timeCounter" TimeCounter />
+    <div class="d-flex justify-content-between">
+      Cumul : {{ tc.cumul }}
+      <button (click)="tc.reset()">Maz du cumul</button>
+      <button (click)="resetCumul()">Maz du cumul (depuis AppComponent)</button>
+    </div>
+
     <p class="mt-5 mb-2">Compteur : {{ nombre }}</p>
     <firstapp-number-editor [(value)]="nombre" [min]="0" [max]="20" />
   </div>

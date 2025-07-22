@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { TimeCounterDirective } from './controls/time-counter.directive';
+import { Component, ViewChild } from '@angular/core';
 import { TravelListComponent } from './travel/travel-list/travel-list.component';
 import { ControlsModule } from './controls/controls.module';
 
@@ -11,4 +12,12 @@ import { ControlsModule } from './controls/controls.module';
 export class AppComponent {
   nombre = 10;
   title = 'firstapp';
+  resetCumul() {
+    this.timeCounterDirective.reset();
+  }
+
+  // ViewChild recherche l'élément avec la référence tc dans le template
+  // disponible après le premier rendu  (pas dans ngOnInit)
+  @ViewChild("tc")
+  timeCounterDirective!: TimeCounterDirective;
 }
