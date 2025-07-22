@@ -10,7 +10,11 @@ import { DataService } from '../../../services/data-service';
   templateUrl: './travel-list.component.html',
   styleUrl: './travel-list.component.scss'
 })
-export class TravelListComponent{
+export class TravelListComponent implements OnInit{
+
+  // Implementer OnInit garantit de ne pas faire d'erreur sur la méthode ngOnInit
+  // Obtention de la liste des Travels
+  // Normalement: Appel à une méthode de service
 
   dataService = inject(DataService);
 
@@ -21,27 +25,4 @@ export class TravelListComponent{
   }
 
   travels?: Travel[];
-
-  // travelsAvecMarge=this.travels.map(t=>({
-  //   ...t,
-  //   prixAvecMarge:t.prix*1.2,
-  //   style: this.getStyle(t)
-  // }));
-
-  // prixAvecMarge(p:number): number{
-  //   return p*1.2;
-  // }
-
-  // getStyle(t:Travel){
-  //   return ({
-  //     "background-color": t.allIncluded ? '#f2f2f2': 'white'
-  //   })
-  // }
-
-  // getClasses(t:Travel){
-  //   return ({
-  //     "travel-entry": true,
-  //     "allIncluded": t.allIncluded
-  //   });
-  // }
 }
