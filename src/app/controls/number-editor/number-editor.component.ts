@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'firstapp-number-editor',
@@ -6,7 +6,28 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './number-editor.component.html',
   styleUrl: './number-editor.component.scss'
 })
-export class NumberEditorComponent {
+export class NumberEditorComponent implements OnChanges {
+
+  // Cycle de vie => exécutée à chaque changement des valeurs des Input
+  // ngOnChanges
+  // ngOnInit
+  // A chaque changement dans les Input => ngOnChanges
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.min != undefined && this.max != undefined && this.min > this.max){
+      [this.min, this.max]=[this.max, this.min];
+    }
+
+    if(this.min != undefined && this.value < this.min){
+      this.value = this.min
+    }
+
+    if(this.max != undefined && this.value > this.max){
+      this.value = this.max
+    }
+  }
+
+
   @Input()
   value=0;
 
