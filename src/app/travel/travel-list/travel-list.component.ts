@@ -12,7 +12,7 @@ import { TravelListItemComponent } from "../travel-list-item/travel-list-item.co
 export class TravelListComponent {
   travels:Travel[] = [
     {
-      label:"Montreux",
+      label:"Montreux, un lundi matin sous un ciel brummeux",
       prix: 1000,
       allIncluded: true
     },
