@@ -15,5 +15,5 @@ export class TravelListItemComponent {
   constructor(private parent: TravelListComponent) {}
 
   @Input()
-  travel!: TravelWithMarge;
+  travel!: Travel;
 }

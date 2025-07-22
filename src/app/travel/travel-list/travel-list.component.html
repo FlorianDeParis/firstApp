@@ -1,10 +1,17 @@
 <h3>Liste des voyages</h3>
-<p>Nombre de voayages : {{ travels.length }}</p>
+@if(travels){
+  <p>Nombre de voayages : {{ travels.length }}</p>
 
-@if (travels.length > 0) {
-  <ul class="list-group">
-    @for(t of travelsAvecMarge; track t;){
-      <firstapp-travel-list-item [travel]="t" />
-    }
-  </ul>
+  @if (travels.length > 0) {
+    <ul class="list-group">
+      @for(t of travels; track t;){
+        <firstapp-travel-list-item [travel]="t" />
+      }
+    </ul>
+  }
+  @else {
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  }
 }
