@@ -1,5 +1,5 @@
 <h3 class="title">Liste des voyages</h3>
-@if(travels){
+@if($travels | async ; as travels){
   <p class="itemsCounter">Nombre de voyages : {{ travels.length }}</p>
 
   @if (travels.length > 0) {
