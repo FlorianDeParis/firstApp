@@ -4,8 +4,10 @@
     <firstapp-travel-list #tc="timeCounter" TimeCounter />
     <div class="d-flex justify-content-between">
       Cumul : {{ tc.cumul }}
-      <button (click)="tc.reset()">Maz du cumul</button>
-      <button (click)="resetCumul()">Maz du cumul (depuis AppComponent)</button>
+      <div class="d-flex gap-3">
+        <button class="btn btn-primary" (click)="tc.reset()">Maz du cumul</button>
+        <button class="btn btn-primary" (click)="resetCumul()">Maz du cumul (depuis AppComponent)</button>
+      </div>
     </div>
 
     <p class="mt-5 mb-2">Compteur : {{ nombre }}</p>

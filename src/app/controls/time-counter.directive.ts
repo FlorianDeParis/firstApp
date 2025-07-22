@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, inject, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener, inject, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[TimeCounter]',
@@ -10,29 +10,34 @@ export class TimeCounterDirective implements OnInit{
 
   constructor() { }
 
-    dateEntree?:number;
-    cumul = 0;
+  @HostBinding("class.mouse-in")
+  get isMouseIn(){
+    return this.dateEntree!=undefined;
+  }
 
-    reset(): void {
-      this.cumul = 0;
-    }
+  dateEntree?:number;
+  cumul = 0;
 
-    ngOnInit(): void {
-      // Ajout d'un évènemenet par JS classique
-      this.element.addEventListener("mouseenter", () => {
-        console.log("Entree");
-        this.dateEntree = Date.now();
-      });
-    }
+  reset(): void {
+    this.cumul = 0;
+  }
 
-    // Association de l'évènement mouseleave de l'élément avec la fonction
-    @HostListener("mouseleave")
-    sortie(){
-      this.cumul += (Date.now() - this.dateEntree!);
-      this.dateEntree = undefined;
-      console.log("Sortie : " + this.cumul);
-    }
+  ngOnInit(): void {
+    // Ajout d'un évènemenet par JS classique
+    this.element.addEventListener("mouseenter", () => {
+      console.log("Entree");
+      this.dateEntree = Date.now();
+    });
+  }
 
-    // Obtention de l'élément sur lequel l'attribut (la directive) est appliqué
-    element = inject(ElementRef).nativeElement as HTMLElement;
+  // Association de l'évènement mouseleave de l'élément avec la fonction
+  @HostListener("mouseleave")
+  sortie(){
+    this.cumul += (Date.now() - this.dateEntree!);
+    this.dateEntree = undefined;
+    console.log("Sortie : " + this.cumul);
+  }
+
+  // Obtention de l'élément sur lequel l'attribut (la directive) est appliqué
+  element = inject(ElementRef).nativeElement as HTMLElement;
 }
