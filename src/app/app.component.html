@@ -3,6 +3,6 @@
     <h1>{{ title }}</h1>
     <firstapp-travel-list></firstapp-travel-list>
     <p class="mt-5">Compteur : {{ nombre }}</p>
-    <firstapp-number-editor (valueModified)="nombre=$event" [value]="nombre" [min]="0" [max]="20" />
+    <firstapp-number-editor [(value)]="nombre" [min]="0" [max]="20" />
   </div>
 </section>

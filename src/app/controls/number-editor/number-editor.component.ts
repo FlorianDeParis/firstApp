@@ -17,8 +17,7 @@ export class NumberEditorComponent {
   max?: number = undefined;
 
   // Ajoute à ce component un evenement 'valueModified'
-  @Output()
-  valueModified = new EventEmitter<number>();
+  @Output("valueChange") valueModified = new EventEmitter<number>();
 
   canIncrement(n: number) {
     return !((this.min != undefined && this.value + n < this.min) || (this.max != undefined && this.value + n > this.max))
