@@ -7,7 +7,7 @@
     <span class="badge rounded-pill"
       [class.bg-success]="travel.allIncluded"
       [class.bg-danger]="!travel.allIncluded">
-      {{ travel.prixAvecMarge | number:".2-4" }}
+      {{ travel.prixAvecMarge | currency }}
     </span>
   </li>
 }
