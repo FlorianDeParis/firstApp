@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Travel } from '../../../models/travel';
 import { CommonModule } from '@angular/common';
 import { TravelListItemComponent } from "../travel-list-item/travel-list-item.component";
+import { DataService } from '../../../services/data-service';
 
 @Component({
   selector: 'firstapp-travel-list',
@@ -10,18 +11,9 @@ import { TravelListItemComponent } from "../travel-list-item/travel-list-item.co
   styleUrl: './travel-list.component.scss'
 })
 export class TravelListComponent {
-  travels:Travel[] = [
-    {
-      label:"Montreux, un lundi matin sous un ciel brummeux",
-      prix: 1000,
-      allIncluded: true
-    },
-    {
-      label:"Rome",
-      prix: 500,
-      allIncluded: false
-    },
-  ];
+
+  dataService = inject(DataService);
+  travels = this.dataService.getTravelAsync("");
 
   travelsAvecMarge=this.travels.map(t=>({
     ...t,

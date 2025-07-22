@@ -7,6 +7,8 @@ import { registerLocaleData } from '@angular/common';
 
 // Import des informations de locationsation françaises
 import locale_fr from "@angular/common/locales/fr";
+import { DataService } from '../services/data-service';
+import { DataRamService } from '../services/data-ram.service';
 
 // Ajoute les "locales" que je vais utiliser dans mon appli
 registerLocaleData(locale_fr,"fr-FR")
@@ -15,6 +17,9 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
+    // Association entre demande pour DataService
+    // et création d'une instance de DataRamService
+    { provide: DataService, useClass: DataRamService },
     { provide: LOCALE_ID, useValue: "fr-FR"},
     { provide: DEFAULT_CURRENCY_CODE, useValue: "EUR"},
     // Dézpendance définie par value => valeur fixe définie au moment du démarrage
