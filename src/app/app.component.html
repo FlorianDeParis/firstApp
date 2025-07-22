@@ -1,8 +1,8 @@
 <section class="layout">
   <div class="container">
     <h1>{{ title }}</h1>
-    <firstapp-travel-list></firstapp-travel-list>
-    <p class="mt-5">Compteur : {{ nombre }}</p>
+    <firstapp-travel-list TimeCounter />
+    <p class="mt-5 mb-2">Compteur : {{ nombre }}</p>
     <firstapp-number-editor [(value)]="nombre" [min]="0" [max]="20" />
   </div>
 </section>

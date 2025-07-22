@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NumberEditorComponent } from './number-editor/number-editor.component';
+import { TimeCounterDirective } from './time-counter.directive';
 
 
 
@@ -8,12 +9,13 @@ import { NumberEditorComponent } from './number-editor/number-editor.component';
   // Liste des éléments faisant partie de ce module
   // Ils se reconnaissent les uns des les autres
   declarations: [
-    NumberEditorComponent
+    NumberEditorComponent,
+    TimeCounterDirective
   ],
   // Imports provenant de l'extérieur
   imports: [],
   // exports: Liste des éléments qui vont être disponibles par import du module
-  exports: [NumberEditorComponent]
+  exports: [NumberEditorComponent, TimeCounterDirective]
 })
 export class ControlsModule {
 
