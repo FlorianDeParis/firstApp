@@ -11,5 +11,8 @@ export abstract class DataService {
   // Méthode asynchrone
   abstract getTravelsAsync(search:string): Promise<Travel[]>;
   abstract getTravelAsync(id:string): Promise<Travel>;
+
+  abstract updateTravelAsync(id:string,t:Travel): Promise<Travel>;
+
   abstract createTravelAsync(t:Travel): Promise<string>;
 }

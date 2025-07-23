@@ -27,6 +27,13 @@ export class DataRamService extends DataService {
       return Promise.resolve(t)
     }
   }
+
+  override async updateTravelAsync(id:string,t:Travel): Promise<Travel> {
+    let travel = await this.getTravelAsync(id);
+    Object.assign(travel,t)
+    return travel
+  }
+
   override createTravelAsync(t: Travel): Promise<string> {
     throw new Error('Method not implemented.');
   }

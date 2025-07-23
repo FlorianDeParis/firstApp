@@ -2,8 +2,7 @@
 
 <!-- travelSign va automatiquement maj le contenu du if si la valeur contenue est modifiée -->
 @if(travelSignal(); as travel){
-  {{ travel | json }}
-  <form action="">
+  <form #formModel="ngForm" (ngSubmit)="validate()">
     <div class="form-gorup">
       <label>libelé</label>
       <input #labelModel="ngModel" required
@@ -12,5 +11,9 @@
       [(ngModel)]="travel.label" class="form-control" type="text">
     </div>
     <firstapp-validation [model]="labelModel" />
+    <hr>
+    <div class="d-flex">
+      <button class="btn btn-primary" [disabled]="formModel.invalid">Valider</button>
+    </div>
   </form>
 }

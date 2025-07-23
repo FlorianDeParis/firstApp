@@ -1,5 +1,5 @@
-import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, computed, effect, inject, Injector, OnInit, signal } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../../../services/data-service';
 import { Travel } from '../../../../models/travel';
 import { FormsModule } from '@angular/forms';
@@ -8,7 +8,7 @@ import { ControlsModule } from "../../../controls/controls.module";
 
 @Component({
   selector: 'firstapp-page-travel-edit',
-  imports: [FormsModule, JsonPipe, ControlsModule],
+  imports: [FormsModule, ControlsModule],
   templateUrl: './page-travel-edit.component.html',
   styleUrl: './page-travel-edit.component.scss'
 })
@@ -30,7 +30,7 @@ export class PageTravelEditComponent implements OnInit{
   // Objet me permettant d'avoir les infos de la route
   activatedRoute = inject(ActivatedRoute);
   dataService = inject(DataService)
-
+  injector=inject(Injector);
 
   // Valeur de travel => mise à jour dans l'UI seulement avec zone .js
   travel?:Travel;
@@ -41,12 +41,22 @@ export class PageTravelEditComponent implements OnInit{
   travelSignal = signal<Travel|undefined>(undefined);
 
 
-
   // effect => va éxécuter la fonction si les signaux utilisés dans la fonction change la valeur
   logChangementTravel = effect(() => {
     console.log(this.travelSignal());
   })
 
   // Nouveau signal avec une valeur qui évolue en fonction de travelSignal
-  prixSignal = computed(() => this.travelSignal()?.prix)
+  prixSignal = computed(() => this.travelSignal()?.prix);
+
+
+  async validate(){
+    try {
+      await this.dataService.updateTravelAsync(this.travelSignal()!.id, this.travelSignal()!);
+      let router = this.injector.get(Router);
+      router.navigateByUrl('/travel/list');
+    } catch (error) {
+
+    }
+  }
 }
