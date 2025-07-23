@@ -1,10 +1,9 @@
-import { TimeCounterDirective } from './controls/time-counter.directive';
-import { Component, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'firstapp-root',
-  imports: [RouterOutlet],
+  imports: [RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

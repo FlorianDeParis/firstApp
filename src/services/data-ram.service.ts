@@ -8,9 +8,9 @@ import { Travel } from '../models/travel';
 export class DataRamService extends DataService {
 
   data = [
-    {label:"Montreux, un lundi matin sous un ciel brummeux",prix: 1000,allIncluded: true},
-    {label:"Montreux, by night",prix: 2500,allIncluded: false},
-    {label:"Rome",prix: 500,allIncluded: false},
+    {id:"1",label:"Montreux, un lundi matin sous un ciel brummeux",prix: 1000,allIncluded: true},
+    {id:"2",label:"Montreux, by night",prix: 2500,allIncluded: false},
+    {id:"3",label:"Rome",prix: 500,allIncluded: false},
   ];
 
   // Methode async qui renvoit les données
@@ -20,7 +20,12 @@ export class DataRamService extends DataService {
     );
   }
   override getTravelAsync(id: string): Promise<Travel> {
-    throw new Error('Method not implemented.');
+    let t = this.data.find( c => c.id == id);
+    if(!t){
+      return Promise.reject(new Error('Non trouvé'))
+    } else {
+      return Promise.resolve(t)
+    }
   }
   override createTravelAsync(t: Travel): Promise<string> {
     throw new Error('Method not implemented.');

@@ -1,19 +1,19 @@
-<h3 class="title">Liste des voyages</h3>
 @if($travels | async ; as travels){
   <p class="itemsCounter mb-2">Nombre de voyages : {{ travels.length }}</p>
-
   @if (travels.length > 0) {
     <ul class="list-group">
-      @for(t of travels; track t;){
+       @for(t of travels; track t){
         <firstapp-travel-list-item [travel]="t" />
       }
     </ul>
+  } @else {
+    pas de travels
   }
-  @else {
-    <div class="d-flex justify-content-center">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Chargement...</span>
-      </div>
+}
+@else {
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Chargement...</span>
     </div>
-  }
+  </div>
 }
