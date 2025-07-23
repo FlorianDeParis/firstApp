@@ -2,7 +2,15 @@
 
 <!-- travelSign va automatiquement maj le contenu du if si la valeur contenue est modifiée -->
 @if(travelSignal(); as travel){
-  {{ travel.id}}
-
+  {{ travel | json }}
+  <form action="">
+    <div class="form-gorup">
+      <label>libelé</label>
+      <input #labelModel="ngModel" required
+      minlength="5"
+      name="label"
+      [(ngModel)]="travel.label" class="form-control" type="text">
+    </div>
+    <firstapp-validation [model]="labelModel" />
+  </form>
 }
-{{ prixSignal() }}€

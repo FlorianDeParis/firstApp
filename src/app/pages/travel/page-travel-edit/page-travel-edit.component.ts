@@ -2,10 +2,13 @@ import { Component, computed, effect, inject, OnInit, signal } from '@angular/co
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../../../../services/data-service';
 import { Travel } from '../../../../models/travel';
+import { FormsModule } from '@angular/forms';
+import { JsonPipe } from '@angular/common';
+import { ControlsModule } from "../../../controls/controls.module";
 
 @Component({
   selector: 'firstapp-page-travel-edit',
-  imports: [],
+  imports: [FormsModule, JsonPipe, ControlsModule],
   templateUrl: './page-travel-edit.component.html',
   styleUrl: './page-travel-edit.component.scss'
 })
