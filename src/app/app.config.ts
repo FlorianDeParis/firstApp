@@ -1,5 +1,5 @@
 import { ApplicationConfig, DEFAULT_CURRENCY_CODE, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withHashLocation } from '@angular/router';
 
 import { routes } from './app.routes';
 import { EllipsisPipeMaxCharacters } from './pipes/ellipsis.pipe';
@@ -16,7 +16,7 @@ registerLocaleData(locale_fr,"fr-FR")
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter(routes, withHashLocation()),
     // Association entre demande pour DataService
     // et création d'une instance de DataRamService
     { provide: DataService, useClass: DataRamService },
