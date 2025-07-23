@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 
 // // Dépendance: une fonction qui prend un id de type string et qui renvoie un lien de type string
 export const TravelItemLinkUrl = new InjectionToken<(id:string)=>string>("TravelItemLinkUrl");
+export const TravelEditItemLinkUrl = new InjectionToken<(id:string)=>string>("TravelEditItemLinkUrl");
 
 
 @Component({
@@ -21,7 +22,7 @@ export class TravelListItemComponent {
   }
 
   linkFunction = inject(TravelItemLinkUrl);
-
+  editFunction = inject(TravelEditItemLinkUrl);
   @Input()
   travel!: Travel;
 }
