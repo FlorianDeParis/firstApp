@@ -43,6 +43,7 @@ export class PageTravelEditComponent implements OnInit{
 
   // effect => va éxécuter la fonction si les signaux utilisés dans la fonction change la valeur
   logChangementTravel = effect(() => {
+    console.log("log changement travel");
     console.log(this.travelSignal());
   })
 
