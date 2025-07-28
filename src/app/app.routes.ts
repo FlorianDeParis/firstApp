@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { PageTravelListComponent } from './pages/travel/page-travel-list/page-travel-list.component';
 import { PageTravelDetailsComponent } from './pages/travel/page-travel-details/page-travel-details.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
   {path: "", redirectTo: "accueil" , pathMatch: "full"},
@@ -10,5 +11,8 @@ export const routes: Routes = [
   {path: "travel/list", component: PageTravelListComponent},
   {path: "travel/details/:id", component: PageTravelDetailsComponent},
   {path: "travel/edit/:id", component: PageTravelEditComponent},
-  {path: "**", redirectTo:""}
+  {path: "**", component:NotFoundComponent}
+
+  // Tout ce qui n'est pas référencé au dessus redirige vers l'accueil
+  // {path: "**", redirectTo:""}
 ];
